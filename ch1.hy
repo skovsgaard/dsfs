@@ -1,5 +1,8 @@
-;(import [__future__ [division]]) ; Hylang importer bug means we get stopped dead here.
-                                 ; Comment the above out to run this with the broken integer division on.
+;(import [__future__ [division]])
+; This is supposed to be here according to the book
+; but apparently this will seem like a bug in Hy
+; this is due to https://github.com/hylang/hy/pull/112
+; which unifies division and therefore doesn't require it.
 
 (def users [{:id 0 :name "Hero"}
             {:id 1 :name "Dunn"}
