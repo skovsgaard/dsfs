@@ -1,4 +1,4 @@
-(import [__future__ [division]]) ; HyLang importer bug means we get stopped dead here.
+;(import [__future__ [division]]) ; Hylang importer bug means we get stopped dead here.
                                  ; Comment the above out to run this with the broken integer division on.
 
 (def users [{:id 0 :name "Hero"}
@@ -36,3 +36,33 @@
   (list-comp
     (, (get user :id) (num-friends user))
     [user users]))
+
+(defn friends-of-friends-ids-bad [user]
+  (list-comp
+    (list-comp
+      (get foaf :id)
+      [foaf (get friend "friends")])
+    [friend (get user "friends")]))
+
+(defn print-friends-by-id [id]
+  (print
+    (list-comp
+      (get friend :id)
+      [friend (get (nth users id) "friends")])))
+
+(print-friends-by-id 0)
+(print-friends-by-id 1)
+(print-friends-by-id 2)
+
+(import [collections [Counter]])
+
+(defn not-same [user other-user]
+  (!=
+    (get user :id)
+    (get other-user :id)))
+
+(defn not-friends [user other-user]
+  (all
+    (list-comp
+      (not-same friend other-user)
+      [friend (get user "friends")])))
