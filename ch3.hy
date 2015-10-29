@@ -36,3 +36,25 @@
     (plt.title "Distribution of Exam 1 Grades")
     (plt.show)))
 
+(defn fig-34 []
+  (let [[mentions [500 505]]
+        [years [2013 2014]]]
+    (plt.bar [2012.6 2013.6] mentions 0.8)
+    (plt.xticks years)
+    (plt.ylabel "# of times I heard someone say 'data science'")
+    (plt.ticklabel-format :useOffset false)
+    (plt.axis [2012.5 2014.5 499 506])
+    (plt.title "Look at the 'HUGE' increase!")
+    (plt.show)))
+
+(defn fig-34-honest []
+  (let [[mentions [500 505]]
+        [years [2013 2014]]]
+    (plt.bar [2012.6 2013.6] mentions 0.8)
+    (plt.xticks years)
+    (plt.ylabel "# of times I heard someone say 'data science'")
+    (plt.ticklabel-format :useOffset false)
+    (plt.axis [2012.5 2014.5 0 550])
+    (plt.title "Not So Huge Anymore")
+    (plt.show)))
+
