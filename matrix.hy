@@ -1,6 +1,6 @@
 (defn shape [A]
-  (let [[num-rows (len A)
-         num-cols (if A
+  (let [[num-rows (len A)]
+        [num-cols (if A
                     (len (car A))
                     0)]]
     (, num-rows num-cols)))
@@ -20,6 +20,6 @@
       [j (range num-cols)])
     [i (range num-rows)]))
 
-(defn is-diagonal [i j]
+(defn diagonal? [i j]
   "1s on the diagonal; 0s everywhere else"
   (if (= i j) 1 0))
